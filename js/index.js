@@ -86,14 +86,42 @@ console.log(Number.parseFloat(stringNum)); // 1.2
 //NaN = не число
 // метод isNan повертає нам значення булеве (true або false)
 // Якщо не число === true
-console.log(Number.isNaN("asdasd")); // true
-// якщо число === false
-console.log(Number.isNaN(100)); // false
+// console.log(Number.isNaN("asdasd")); // true
+// // якщо число === false
+// console.log(Number.isNaN(100)); // false
 
 Number.isNaN("asdasd"); // true
 Number.isNaN(100); // false
 
 // ------------ДОДАВАННЯ ЧИСЕЛ З ПЛАВАЮЧОЮ ТОЧКОЮ-----------
+
 // 0.1, 0.2 ,0.3, 0.4.
+// Проблема 0.1
+console.log(0.1 + 0.2); //0.30000000000000004
+// чому?
+// Браузер рахує у двійковій системі 0101010010110
+//  0.1 * 10 = 1
+//  0.2 * 10; = 2
+// 1 + 2 = 3
+// 3/10 = 0.3
+console.log((0.1 * 10 + 0.2 * 10) / 10);
+
 // --------------------------MATH---------------------------
-//Ступені
+// Math.max = повертає найбільше число
+console.log(Math.max(1, 2, 3, 4, 5)); // 5
+// Math.min = повертає найменше число
+console.log(Math.min(1, 2, 3, 4, 5)); // 1
+// Округлює за математичними правилами
+console.log(Math.round(7.7));
+// Округлює до меншого числа
+console.log(Math.floor(7.7)); // 7
+// Округлює до більшого числа
+console.log(Math.ceil(7.2)); // 8
+// Піднесення до ступеня (перше число це число яке треба піднести до ступіня, друге число це ступінь до якого треба піднести)
+console.log(Math.pow(40, 4));
+// Повертає рандомне число(в данному випадку від 1 до 100)
+console.log(Math.floor(Math.random() * (100 - 1) + 1));
+
+// false, null,undefined , "", 0 = false
+
+//  1,23,, "aisjdasd", true, = true
