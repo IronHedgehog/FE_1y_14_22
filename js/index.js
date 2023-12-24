@@ -26,11 +26,92 @@ const string = "Артем"; // індекс букви т = 2
 // Індекс завжди на 1 менший за довжину тому що він починається з 0 string.length - 1
 console.log(string.length); //починає рахувать з одиниці(1)
 
-// Методи
-
 // --------------Навчитися працювати з рядками.------------
-
 // Навчимося зшивати рядки.
+
+const user = "Artem";
+// Додавання рядків один до одного = конкатинація рядків
+// конкатинація = додавання рядків
+console.log("Привіт, " + user);
+
+// 5 + 5
+// 10 + "5" = коли ви ,будь-що, додаєте до строки ви отримуєте строку
+// "105"
+console.log(5 + 5 + "5"); // = 105
+
+console.log(5 + "5" + 5); // = 555
+
+// "5" + 5 = "55"
+// "55" + 5 = "555"
+
+console.log("5" + 5 + 5); // = 555
+
+//------------------- Методи роботи з рядками-------------
+
+const str = "Artem";
+
+// Основна властивість length (повертає кількість символів у рядку)
+
+console.log(str.toUpperCase()); // Великі букви
+console.log(str.toLowerCase()); // Малі букви
+
+const word = "SALE";
+if (word.toLowerCase() === "Sale".toLowerCase()) {
+  console.log(" так не треба");
+}
+//  indexof це метод який повертає вам індекс  елемента який ми шукаємо
+// indexof чутливий до регістру (Якщо ви шукаєте маленьку букву а у рядку цяж велика то indexof поверне -1)
+// Якщо елементу не існує у рядку то indexof  повертає -1
+
+console.log(word.indexOf("a")); // = 3
+console.log(word.indexOf("S")); // = 0
+console.log(word[-1]); // undefined
+
+// .INCLUDES()
+// повертає бульове значення true або false
+// Чутливий до регістру
+// якщо словосполучення що ви передали у круглі дужки includes існує у рядку він поверне true якщо не існує поверне false
+const hello = "Hello world";
+
+console.log(hello.includes("h")); // false
+console.log(hello.includes("Hello")); // true
+
+const wordWithSpase = "    word    ";
+
+// .trim()
+// метод який видаляє пробіли на початку рядка та у його кінці
+console.log(wordWithSpase.trimStart()); // Видаляє або обрізає пробіли на початку рядка
+console.log(wordWithSpase.trimEnd()); // Видаляє або обрізає пробіли в кінці рядка
+
+console.log(wordWithSpase.trim()); // обрізає пробіли з обох сторін
+
+const newString = "NewString";
+// .startsWith() метод який перевіряє чи починається рядок з символів які ви вказали повертає true якщо такий набір символів є на початку рядка і false якщо не має
+// чутливий до регістру
+
+//
+console.log(newString.startsWith("New"));
+// .startsWith() метод який перевіряє чи закінчується рядок з символів які ви вказали повертає true якщо такий набір символів є в кінці рядка і false якщо не має
+// чутливий до регістру
+console.log(newString.endsWith("ingg"));
+
+const padString = "String";
+const hours = 1;
+//.padStart()  рядок на якому ми тебе викликали має бути в довжину 10 символів, якщо символів не вистачає додай на початок рядок "B"
+
+console.log(hours.toString().padStart(2, "0")); //
+//.padEnd()  рядок на якому ми тебе викликали має бути в довжину 10 символів, якщо символів не вистачає додай в кінець рядок "B"
+console.log(padString.padEnd(10, "A")); //
+
+// -----------------------ШАБЛОННІ РЯДКИ--------------------
+console.log("I" + "Love" + "javaScript"); //ALoveJavaScript
+
+const name = "Artem";
+// щоб використати змінну у шаблонному рядку нам треба використати наступний синтаксис ${Назва змінної значення якох треба підставить}
+console.log(name + "helllo" + "hello" + name);
+console.log(`${name} hello hello ${name}`);
+console.log(`${name} love JavaScript`);
+console.log(`Hello` + name);
 
 // Навчимося працювати з оператором % - ділення на ціле число
 
