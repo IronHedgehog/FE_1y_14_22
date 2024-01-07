@@ -8,3 +8,11 @@
 [plus] {
   background-color: red;
 }
+
+.active {
+  color: red;
+}
+
+.normal {
+  color: black;
+}
