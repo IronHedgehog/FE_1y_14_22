@@ -34,14 +34,25 @@ if (user >= plus) {
   console.log("Ви можете придбати підписку plusPlusExtra");
 }
 
-if (user >= plus) {
-  console.log("Ви можете придбати підписку plus");
-}
+// if (user >= plus) {
+//   console.log("Ви можете придбати підписку plus");
+// }
 
-if (user >= plusPlus) {
-  console.log("Ви можете придбати підписку plus plus");
-}
+// if (user >= plusPlus) {
+//   console.log("Ви можете придбати підписку plus plus");
+// }
 
-if (user >= plusPlusExtra) {
-  console.log("Ви можете придбати підписку plus plus Extra");
+// if (user >= plusPlusExtra) {
+//   console.log("Ви можете придбати підписку plus plus Extra");
+// }
+// if (умова яка має повернути true || false)
+// true - відпрацьовує
+// false - не відпрацьовує (відпрацьовує якщо не виконується if)
+//  6 значень які завжди = false (null, undefined ,0 , "", NaN, false)
+if (0) {
+  console.log(0 / 0); // NaN
+} else if (1) {
+  console.log(null); // null
+} else {
+  console.log(1 / 0); // infinity
 }
