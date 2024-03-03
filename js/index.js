@@ -1,76 +1,79 @@
-doCoffee("water");
+d();
+// signUp - функція яка як параметр приймає інші функція така функція називається функцією вищого порядку
 
-// var, function declaration
-// вcе що має Hoisting вспливає та ці елементи можна викликати в будь-якій точці документу
-// ------------Дізнаємось що таке функція.-----------
-
-//  -----------Які є способи створення функцій. ----------
-
-// 1)спосіб створення function declaration()
-// Функціональнй вираз
-// function = створення функції
-// function name(doCoffee) = імʼя функції яку ми будемо розробляту
-// () - набір аргументів які потрібні для адекватної роботи функції
-// {} - тіло нашої функії яке буде виконуватись
-const a = [1, 2, 3, 4];
-function name(name = "Anonim") {
-  console.log(name);
+function signUp(filterUser) {
+  const filteredUser = filterUser();
 }
 
-function doCoffee(water, milk, coffee) {
-  if (!water && !milk && !coffee) return;
+// колбек - це функція яка сама по собі ніколи не відпрацьовує. ПРоте вона відпрацьовує  інших функціях та передається туди як параметр
+function getInfo() {
+  console.log("Отримали інформацію");
+}
+function filterUser(info) {
+  const userInfo = info();
+  console.log("Юзери пофільтровані боти видалені");
+}
 
-  let mediana = "50%";
-  console.log(mediana);
-  console.log("вода : " + water, "молока : " + milk, "кава : " + coffee);
-  mediana = "79%";
-  // console.log(b + 20);
-  console.log(mediana);
-  if (coffee && milk && water) {
-    const b = 1;
-    if (b) {
-      console.log(b + 20);
-    }
-    console.log("Роблю каву з молоком");
-  } else if (water && coffee) {
-    console.log("Роблю каву ");
-  } else if (water) {
-    console.log("Додайте каву та молоко бо є лише вода");
-  } else {
-    console.log("тут нічого немає");
+const a = 5;
+
+function findName(name, test) {
+  let result = "Людину не знайдено";
+  if (test(name.toLowerCase())) {
+    result = `${name}, привіт!`;
   }
+  return result;
 }
 
-mediana = "80%";
+function test(name) {
+  if (name === "Artem".toLowerCase()) {
+    return true;
+  }
+  return false;
+}
 
-console.log(mediana);
-// Методи, це функції.
-// наша функція doCoffee() приймає три параметри
-// Дуже важливо передавати всі аргументи по тій черзі,що ви вказали у функції
-for (const b of a) {
+console.log(findName("artem", test));
+
+console.log(a);
+
+var b = 10;
+
+function d(b = 10, a = 3) {
+  console.log(a + b);
+}
+
+// sortedArr - cтрілочна функція яка сортує за зростанням будь-який масив
+
+//  const sortedArr - ми створили змінну та дали назву нашій функції
+// (arr) - параметри стрілочної функції
+//=> обовʼязкова частина стрілочної функції (вона має функцію раннього повернення ця стрілка мітстиь у собі ретурн)
+
+//якщо у вас одна строка коду то вам не потрбіно писати ретурн проте якщо їх 2 та більше то він все ще обовʼязковим
+
+// {} - тіло функції, воно пишеться та виконуєтсья одразу після стрілки
+// неявне повернення(ретурн прихований у трілці)
+const getSumm = (a, b) => a + b + c;
+
+const getSum = (a, b) => {
+  const c = 3;
+  // явне повернення
+  return a + b + c;
+};
+
+const getSummm = (a, b, ...arg) => {
+  const c = 3;
+  console.log(a);
   console.log(b);
-}
+  console.log(arg);
+  // явне повернення
+  return a + b + c;
+};
+console.log(getSummm(1, 23, 4, 5, 6, 7, 8, 9));
+console.log(getSum(10, 10));
 
-doCoffee("water");
-name("Artem");
+const sortedArr = (arr) => {
+  return arr.sort((a, b) => a - b);
+};
 
-// Функція яка немає ретурну(яка нічого не повертає) повертає завжди undefined
-function maltiply(a, b) {
-  //  Поверни у зовнішній код A помножене на B
-  // arguments існує лише всередині функції утворених через ключове слово function(function declaration)
-  console.log(arguments);
-  // Array.from() - метод який намагається перетворити усе що ви передасте в масив
-  const copyArg = Array.from(arguments);
-  console.log(copyArg);
-  return a * b;
-}
+console.log(sortedArr([10, 5, 12, 50, 1]));
 
-console.log(maltiply(5, 5));
-
-const b = 50;
-
-// -------- Вивчимо що таке функціональна область видимості.
-// --------------- Розберемо порядок виконання коду.
-//-------------- Вивчимо що таке параметри та аргументи.
-// -------------------------Ціль уроку:
-//-------- Навчитися створювати та використовувати  функції
+console.log(sortedArr([100000, 1000, 14, 20, 1, 5]));
