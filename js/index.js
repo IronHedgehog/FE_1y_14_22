@@ -1,72 +1,72 @@
-// щоб створити обʼєкт ми маємо записати {}
-
-//width, height - ключ за яким зберігається значення в обʼєкті - ключ це завжди строка
-// "200cm","120cm" - значення які ми встановлюємо.
-const table = {
-  width: "200cm", //ширина
-  height: "120cm", // висота
-  length: "80cm", // довжина
-
-  plusWidth(width) {
-    return parseFloat(this.width) + parseFloat(width);
-  },
-
-  // getCM3 - метод який повертає нам метри кубічні столу
-  getCM3() {
-    // this - посилання на обʼєкт в якому ми його використовуємо (тобто якщо ми використовуємо this  у обʼєкті table то this === table)
-    console.log(this);
-    console.log(
-      parseFloat(this.width) * parseFloat(this.height) * parseFloat(this.length)
-    );
-  },
-};
-console.log(200 * 120 * 80);
-// console.log(table.getCM3());
-
-// для того щоб отримати існуючу властивість треба звернутись через крапку
-
-console.log(table.height);
-table.height = "200cm";
-console.log(table.height);
-
-table.plusWidth("20cm");
-table.getCM3();
-console.log(table);
-
-//.mode - можимо створити поле в обʼєкті
-// якщо поля немає і ви не даєте значення при зверненні то отримаєте undefined
-// console.log(table.mode);
-// mode: "Gamer"
-table.mode = "Gamer";
-// table.a = "Gamer";
-// table.d = "Gamer";
-// table.c = "Gamer";
-// другий спосіб отримати значення
-console.log(table["width"]);
-// delete дозволяє видаляти поля обʼєкта
-// delete table.getCM3;
-
-console.log(table);
-
-const name = "Artem";
-const email = "arrr@gm.com";
-
-// const user = {
-//   name: name,
-//   email: email,
-// };
-// короткі властивості
-const user = {
-  name,
-  email,
+const hotel = {
+  name: "Resort hotel",
+  stars: 5,
+  copacity: 100,
 };
 
-console.log(user);
+// console.log(hotel["stars"]);
 
-const test1 = "test";
+// Обʼєкти за замовчуванням not iterable(не можна перебрати та отримати значення та ключі)
+// for in - спеціальний цикл для перебору обʼєктів(жоден інший цикл не може перебирати обʼєкти оскільки вони (not iterable)
+for (const key in hotel) {
+  //   const value = hotel[key]; - дозволяє отримати значення з обʼєкту
+  const value = hotel[key];
+  console.log(value);
+}
 
-const test = {
-  [test1]: test1,
+const book = {
+  title: "book",
+  author: "Artem",
 };
 
-console.log(test);
+for (const key in book) {
+  console.log("value ", book["author"]);
+}
+
+// for (const iterator of book) {
+// }
+
+// Object.keys(hotel) - властивість яка поверне всі ключі обʼєкта hotel
+
+const keys = Object.keys(hotel);
+
+// Object.values(hotel); - повертає усі значення полів обʼєкту hotel
+const values = Object.values(hotel);
+
+//  Object.entries(hotel) повертає у вигляді масивів в масиві пари обʼєкта такі як ключ-значення
+const entries = Object.entries(hotel);
+
+console.log(entries);
+
+for (const item of entries) {
+  for (const array of item) {
+    console.log(array);
+  }
+}
+
+console.log(values);
+
+for (const item of keys) {
+  console.log(hotel[item]);
+}
+// SPREAD and REST (...)
+// ...
+
+function name(...params) {
+  // Rest operator - бо він збирає параметри в масив
+  console.log(params);
+}
+
+name(5, 6, 7, 7, 8, 9, 0);
+// як знайти мінімальне значення?
+const temperature = [20, 5, 0, 3, 15, -10, 7];
+const min = Math.min(...temperature);
+console.log(min);
+// let m = temperature[0];
+
+// for (let index = 0; index < temperature.length; index++) {
+//   if (temperature[index] < m) {
+//     m = temperature[index];
+//   }
+// }
+// console.log(m);
