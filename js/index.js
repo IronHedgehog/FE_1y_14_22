@@ -49,6 +49,55 @@ console.log(values);
 for (const item of keys) {
   console.log(hotel[item]);
 }
+
+// [
+//   {
+//     name: "Resort hotel",
+//     stars: 5,
+//     copacity: 100,
+//   },
+//   {
+//     name: "Resort hotel",
+//     stars: 5,
+//     copacity: 100,
+//   },
+//   {
+//     name: "Resort hotel",
+//     stars: 5,
+//     copacity: 100,
+//   },
+//   {
+//     name: "Resort hotel",
+//     stars: 5,
+//     copacity: 100,
+//   },
+//   {
+//     name: "Resort hotel",
+//     stars: 5,
+//     copacity: 100,
+//   },
+//   {
+//     name: "Resort hotel",
+//     stars: 5,
+//     copacity: 100,
+//   },
+//   {
+//     name: "Resort hotel",
+//     stars: 5,
+//     copacity: 100,
+//   },
+//   {
+//     name: "Resort hotel",
+//     stars: 5,
+//     copacity: 100,
+//   },
+//   {
+//     name: "Resort hotel",
+//     stars: 5,
+//     copacity: 100,
+//   },
+// ];
+
 // SPREAD and REST (...)
 // ...
 
@@ -70,3 +119,30 @@ console.log(min);
 //   }
 // }
 // console.log(m);
+
+const copyTemperature = [...temperature];
+console.log(copyTemperature);
+
+// Існує один складний тип даних - обʼєкт
+// обʼєкти в памʼяті зберігаються за посиланням(за адресою)
+// у кожного елементу який є складним типом данних в памʼяті є своя адреса тому кожен обʼєкт унікальний і не дорівнює іншим навіть повністю ідентичним за змістом
+
+console.log(temperature === copyTemperature);
+// .slice(); - робить повну копію масиву
+const copyOldArr = temperature.slice();
+console.log(copyOldArr);
+
+const copy = copyOldArr.concat(copyTemperature);
+
+console.log(copy);
+
+// дозволяє копіювати та поєднувати будь-які масиви
+const copyNewArr = [...copyOldArr, ...copyTemperature, 20, 30, 40, [50], "60"];
+
+console.log(copyNewArr);
+// const shict = [(1)[(2)[(3)[(4)[(5)[(6)[(7)[(8)[9]]]]]]]]];
+
+const newHotel = { ...hotel, pool: true, bar: true };
+newHotel.name = "NewHotel";
+
+console.log(newHotel);
