@@ -1,79 +1,72 @@
-d();
-// signUp - функція яка як параметр приймає інші функція така функція називається функцією вищого порядку
+// щоб створити обʼєкт ми маємо записати {}
 
-function signUp(filterUser) {
-  const filteredUser = filterUser();
-}
+//width, height - ключ за яким зберігається значення в обʼєкті - ключ це завжди строка
+// "200cm","120cm" - значення які ми встановлюємо.
+const table = {
+  width: "200cm", //ширина
+  height: "120cm", // висота
+  length: "80cm", // довжина
 
-// колбек - це функція яка сама по собі ніколи не відпрацьовує. ПРоте вона відпрацьовує  інших функціях та передається туди як параметр
-function getInfo() {
-  console.log("Отримали інформацію");
-}
-function filterUser(info) {
-  const userInfo = info();
-  console.log("Юзери пофільтровані боти видалені");
-}
+  plusWidth(width) {
+    return parseFloat(this.width) + parseFloat(width);
+  },
 
-const a = 5;
+  // getCM3 - метод який повертає нам метри кубічні столу
+  getCM3() {
+    // this - посилання на обʼєкт в якому ми його використовуємо (тобто якщо ми використовуємо this  у обʼєкті table то this === table)
+    console.log(this);
+    console.log(
+      parseFloat(this.width) * parseFloat(this.height) * parseFloat(this.length)
+    );
+  },
+};
+console.log(200 * 120 * 80);
+// console.log(table.getCM3());
 
-function findName(name, test) {
-  let result = "Людину не знайдено";
-  if (test(name.toLowerCase())) {
-    result = `${name}, привіт!`;
-  }
-  return result;
-}
+// для того щоб отримати існуючу властивість треба звернутись через крапку
 
-function test(name) {
-  if (name === "Artem".toLowerCase()) {
-    return true;
-  }
-  return false;
-}
+console.log(table.height);
+table.height = "200cm";
+console.log(table.height);
 
-console.log(findName("artem", test));
+table.plusWidth("20cm");
+table.getCM3();
+console.log(table);
 
-console.log(a);
+//.mode - можимо створити поле в обʼєкті
+// якщо поля немає і ви не даєте значення при зверненні то отримаєте undefined
+// console.log(table.mode);
+// mode: "Gamer"
+table.mode = "Gamer";
+// table.a = "Gamer";
+// table.d = "Gamer";
+// table.c = "Gamer";
+// другий спосіб отримати значення
+console.log(table["width"]);
+// delete дозволяє видаляти поля обʼєкта
+// delete table.getCM3;
 
-var b = 10;
+console.log(table);
 
-function d(b = 10, a = 3) {
-  console.log(a + b);
-}
+const name = "Artem";
+const email = "arrr@gm.com";
 
-// sortedArr - cтрілочна функція яка сортує за зростанням будь-який масив
-
-//  const sortedArr - ми створили змінну та дали назву нашій функції
-// (arr) - параметри стрілочної функції
-//=> обовʼязкова частина стрілочної функції (вона має функцію раннього повернення ця стрілка мітстиь у собі ретурн)
-
-//якщо у вас одна строка коду то вам не потрбіно писати ретурн проте якщо їх 2 та більше то він все ще обовʼязковим
-
-// {} - тіло функції, воно пишеться та виконуєтсья одразу після стрілки
-// неявне повернення(ретурн прихований у трілці)
-const getSumm = (a, b) => a + b + c;
-
-const getSum = (a, b) => {
-  const c = 3;
-  // явне повернення
-  return a + b + c;
+// const user = {
+//   name: name,
+//   email: email,
+// };
+// короткі властивості
+const user = {
+  name,
+  email,
 };
 
-const getSummm = (a, b, ...arg) => {
-  const c = 3;
-  console.log(a);
-  console.log(b);
-  console.log(arg);
-  // явне повернення
-  return a + b + c;
-};
-console.log(getSummm(1, 23, 4, 5, 6, 7, 8, 9));
-console.log(getSum(10, 10));
+console.log(user);
 
-const sortedArr = (arr) => {
-  return arr.sort((a, b) => a - b);
+const test1 = "test";
+
+const test = {
+  [test1]: test1,
 };
 
-console.log(sortedArr([10, 5, 12, 50, 1]));
-
-console.log(sortedArr([100000, 1000, 14, 20, 1, 5]));
+console.log(test);
