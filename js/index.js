@@ -1,148 +1,101 @@
-const hotel = {
-  name: "Resort hotel",
-  stars: 5,
-  copacity: 100,
+const user = {
+  name: "User",
+  age: 18,
+  mood: "Norm",
+  bankAccount: {
+    count: 1000,
+  },
+};
+const user1 = {
+  name1: "User1",
+  age1: 17,
+  mood1: "Ok",
+};
+// деструктуризація
+// 1)const - ключове слово для створення змінної
+// {} - означає,що ви бажаєте взяти якісь властивості з обʼєкту
+//  = user - обʼєкт з якого ви бажаєте взяти значпення
+// у середині фігурних дужок виаписуємо ключі які нам необхідні
+// суть деструктуризації у тому,щоб можна було взяти лише необхідні значення
+
+// Можемо щоб не сипало undefined задавати для змінних значення за замовчуванням через =
+const { age1 } = user1;
+const {
+  mood = "ВсЕ СУПпЕР",
+  name = "Завжди прекрасний",
+  age = 18,
+  status = "VIP",
+} = user;
+
+console.log(name, mood, age, status);
+console.log(age1);
+const { a, b, c } = user;
+console.log(a, b, c);
+const { q, w, e } = user;
+console.log(q, w, e);
+
+const user3 = { name1: "User3", age1: 17, mood1: "super" };
+
+const { name1, age1: iosfoisDFKJ = 20, mood1 } = user3;
+
+console.log(iosfoisDFKJ);
+// badMood - псевдонім змінної mood1
+// в данному випадку рест оператор(...) збирає обʼєкт
+// окремо ми з вами деструктуризували badmood щоб мати до нього швидкий доступ
+
+// ... - або рест оператор або спреад оператор
+// рест збирає данні в масив або обʼєкт
+// spread розпиляє по одному значенню
+const { mood1: badMood, name1: goodName, ...rest } = user3;
+console.log(badMood, goodName);
+console.log(rest);
+
+const user10 = {
+  name: "User10",
+  age: 30,
+  mood: "Norm",
+  bankAccount: {
+    count: 100000,
+  },
+
+  cards: ["first", "third"],
 };
 
-// console.log(hotel["stars"]);
+// console.log(user10.cards);
+// console.log(user10.bankAccount.count);
 
-// Обʼєкти за замовчуванням not iterable(не можна перебрати та отримати значення та ключі)
-// for in - спеціальний цикл для перебору обʼєктів(жоден інший цикл не може перебирати обʼєкти оскільки вони (not iterable)
-for (const key in hotel) {
-  //   const value = hotel[key]; - дозволяє отримати значення з обʼєкту
-  const value = hotel[key];
-  console.log(value);
+// є можливість глибокої деструктуризації
+// для цього ми пишемо : та літерал того,що бажаємо деструктурузувати і в середину літералу можна записати будь яку назву змінної
+const {
+  bankAccount: { count },
+  cards: [card1, card2],
+} = user10;
+
+console.log(card1, card2);
+console.log(count);
+
+const arr = [100000, 50000, 10000];
+
+// використати цикл для перебору
+
+for (const element of arr) {
+  console.log(element);
 }
+// взяти значення за індексом
+console.log(arr[1]);
+// деструктуризувати значення
+const [f, g, h] = arr;
+console.log(f);
+console.log(g);
+console.log(h);
+// окремо створили змінні для перевизначення
+let color1, color2, color3;
 
-const book = {
-  title: "book",
-  author: "Artem",
-};
+[color1, color2, color3, alpha = 0.5] = arr;
 
-for (const key in book) {
-  console.log("value ", book["author"]);
-}
+console.log(color1, color2, color3, alpha);
+// для того,щоб пропустити непотрібний елемент,нам треба ставити коми
+const [, , blue] = arr;
+const [red, ...colors] = arr;
 
-// for (const iterator of book) {
-// }
-
-// Object.keys(hotel) - властивість яка поверне всі ключі обʼєкта hotel
-
-const keys = Object.keys(hotel);
-
-// Object.values(hotel); - повертає усі значення полів обʼєкту hotel
-const values = Object.values(hotel);
-
-//  Object.entries(hotel) повертає у вигляді масивів в масиві пари обʼєкта такі як ключ-значення
-const entries = Object.entries(hotel);
-
-console.log(entries);
-
-for (const item of entries) {
-  for (const array of item) {
-    console.log(array);
-  }
-}
-
-console.log(values);
-
-for (const item of keys) {
-  console.log(hotel[item]);
-}
-
-// [
-//   {
-//     name: "Resort hotel",
-//     stars: 5,
-//     copacity: 100,
-//   },
-//   {
-//     name: "Resort hotel",
-//     stars: 5,
-//     copacity: 100,
-//   },
-//   {
-//     name: "Resort hotel",
-//     stars: 5,
-//     copacity: 100,
-//   },
-//   {
-//     name: "Resort hotel",
-//     stars: 5,
-//     copacity: 100,
-//   },
-//   {
-//     name: "Resort hotel",
-//     stars: 5,
-//     copacity: 100,
-//   },
-//   {
-//     name: "Resort hotel",
-//     stars: 5,
-//     copacity: 100,
-//   },
-//   {
-//     name: "Resort hotel",
-//     stars: 5,
-//     copacity: 100,
-//   },
-//   {
-//     name: "Resort hotel",
-//     stars: 5,
-//     copacity: 100,
-//   },
-//   {
-//     name: "Resort hotel",
-//     stars: 5,
-//     copacity: 100,
-//   },
-// ];
-
-// SPREAD and REST (...)
-// ...
-
-function name(...params) {
-  // Rest operator - бо він збирає параметри в масив
-  console.log(params);
-}
-
-name(5, 6, 7, 7, 8, 9, 0);
-// як знайти мінімальне значення?
-const temperature = [20, 5, 0, 3, 15, -10, 7];
-const min = Math.min(...temperature);
-console.log(min);
-// let m = temperature[0];
-
-// for (let index = 0; index < temperature.length; index++) {
-//   if (temperature[index] < m) {
-//     m = temperature[index];
-//   }
-// }
-// console.log(m);
-
-const copyTemperature = [...temperature];
-console.log(copyTemperature);
-
-// Існує один складний тип даних - обʼєкт
-// обʼєкти в памʼяті зберігаються за посиланням(за адресою)
-// у кожного елементу який є складним типом данних в памʼяті є своя адреса тому кожен обʼєкт унікальний і не дорівнює іншим навіть повністю ідентичним за змістом
-
-console.log(temperature === copyTemperature);
-// .slice(); - робить повну копію масиву
-const copyOldArr = temperature.slice();
-console.log(copyOldArr);
-
-const copy = copyOldArr.concat(copyTemperature);
-
-console.log(copy);
-
-// дозволяє копіювати та поєднувати будь-які масиви
-const copyNewArr = [...copyOldArr, ...copyTemperature, 20, 30, 40, [50], "60"];
-
-console.log(copyNewArr);
-// const shict = [(1)[(2)[(3)[(4)[(5)[(6)[(7)[(8)[9]]]]]]]]];
-
-const newHotel = { ...hotel, pool: true, bar: true };
-newHotel.name = "NewHotel";
-
-console.log(newHotel);
+console.log(red, colors);
