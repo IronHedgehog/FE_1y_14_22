@@ -1,22 +1,41 @@
-// Завдання 6
-// Напиши функцію calculateTotalPrice(allProdcuts, productName), яка отримує масив об'єктів та ім'я продукту (значення властивості name). Повертає загальну вартість продукту (ціна * кількість).
-// Викличи функції для перевірки працездатності твоєї реалізації.
+// badMood - псевдонім змінної mood1
+// в данному випадку рест оператор(...) збирає обʼєкт
+// окремо ми з вами деструктуризували badmood щоб мати до нього швидкий доступ
 
-const products = [
-  { name: "Радар", price: 1300, quantity: 4 },
-  { name: "Сканер", price: 2700, quantity: 3 },
-  { name: "Дроїд", price: 400, quantity: 7 },
-  { name: "Захоплення", price: 1200, quantity: 2 },
-];
+// ... - або рест оператор або спреад оператор
+// рест збирає данні в масив або обʼєкт
+// spread розпиляє по одному значенню
+// const { mood1: badMood, name1: goodName, ...rest } = user3;
+// console.log(badMood, goodName);
+// console.log(rest);
 
-const calculateTotalPrice = (allProdcuts, productName) => {
-  for (const product of allProdcuts) {
-    if (product.name === productName) {
-      return product.price * product.quantity;
-    }
-  }
-  return "Такого товару немає";
+const table = {
+  material: "wood",
+  width: 100,
+  height: 200,
+  versions: {
+    pro: true,
+    gamers: false,
+    work: true,
+  },
 };
-
-console.log(calculateTotalPrice(products, "Радар")); // 5200
-console.log(calculateTotalPrice(products, "Дроїд"));
+// Стандартне звернення до властивості обʼєкта
+console.log(table.material);
+// Деструктуризація
+// деструктуризація обʼєктів
+// усередені фігурних дужок ми можемо взяти необхідні властивості
+// Якщо змінна вже існує,то нам треба її переназвати для цього використати :
+const {
+  material: material1,
+  width: width1,
+  height: height1,
+  versions: { pro: first, gamers, work },
+} = table;
+console.log(first);
+const table2 = {
+  material: "iron",
+  width: 100,
+  height: 200,
+};
+const { material: material2 } = table2;
+console.log(material2);

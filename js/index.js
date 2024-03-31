@@ -1,101 +1,122 @@
-const user = {
-  name: "User",
-  age: 18,
-  mood: "Norm",
-  bankAccount: {
-    count: 1000,
-  },
-};
-const user1 = {
-  name1: "User1",
-  age1: 17,
-  mood1: "Ok",
-};
-// деструктуризація
-// 1)const - ключове слово для створення змінної
-// {} - означає,що ви бажаєте взяти якісь властивості з обʼєкту
-//  = user - обʼєкт з якого ви бажаєте взяти значпення
-// у середині фігурних дужок виаписуємо ключі які нам необхідні
-// суть деструктуризації у тому,щоб можна було взяти лише необхідні значення
+// Impera
 
-// Можемо щоб не сипало undefined задавати для змінних значення за замовчуванням через =
-const { age1 } = user1;
-const {
-  mood = "ВсЕ СУПпЕР",
-  name = "Завжди прекрасний",
-  age = 18,
-  status = "VIP",
-} = user;
+const number = [1, 2, 3, 4, 5];
 
-console.log(name, mood, age, status);
-console.log(age1);
-const { a, b, c } = user;
-console.log(a, b, c);
-const { q, w, e } = user;
-console.log(q, w, e);
+const filteredNums = [];
 
-const user3 = { name1: "User3", age1: 17, mood1: "super" };
-
-const { name1, age1: iosfoisDFKJ = 20, mood1 } = user3;
-
-console.log(iosfoisDFKJ);
-// badMood - псевдонім змінної mood1
-// в данному випадку рест оператор(...) збирає обʼєкт
-// окремо ми з вами деструктуризували badmood щоб мати до нього швидкий доступ
-
-// ... - або рест оператор або спреад оператор
-// рест збирає данні в масив або обʼєкт
-// spread розпиляє по одному значенню
-const { mood1: badMood, name1: goodName, ...rest } = user3;
-console.log(badMood, goodName);
-console.log(rest);
-
-const user10 = {
-  name: "User10",
-  age: 30,
-  mood: "Norm",
-  bankAccount: {
-    count: 100000,
-  },
-
-  cards: ["first", "third"],
-};
-
-// console.log(user10.cards);
-// console.log(user10.bankAccount.count);
-
-// є можливість глибокої деструктуризації
-// для цього ми пишемо : та літерал того,що бажаємо деструктурузувати і в середину літералу можна записати будь яку назву змінної
-const {
-  bankAccount: { count },
-  cards: [card1, card2],
-} = user10;
-
-console.log(card1, card2);
-console.log(count);
-
-const arr = [100000, 50000, 10000];
-
-// використати цикл для перебору
-
-for (const element of arr) {
-  console.log(element);
+for (let index = 0; index < number.length; index++) {
+  if (number[index] > 2) {
+    filteredNums.push(number[index]);
+  }
 }
-// взяти значення за індексом
-console.log(arr[1]);
-// деструктуризувати значення
-const [f, g, h] = arr;
-console.log(f);
-console.log(g);
-console.log(h);
-// окремо створили змінні для перевизначення
-let color1, color2, color3;
 
-[color1, color2, color3, alpha = 0.5] = arr;
+console.log(filteredNums);
 
-console.log(color1, color2, color3, alpha);
-// для того,щоб пропустити непотрібний елемент,нам треба ставити коми
-const [, , blue] = arr;
-const [red, ...colors] = arr;
+// Declarate
 
-console.log(red, colors);
+const numberDeclarate = [1, 2, 3, 4, 5];
+
+// filter - це метод перебору циклу який
+// 1) повертає новий масив
+// 2) повертає відфільтрований масив за умовою
+
+// Чисті функції - це функції які при роботі з масивом не замінюють його початкові значення
+// const filteredDeclarateNums = numberDeclarate.filter(function (value) {
+//   return value > 2;
+// });
+filteredDeclarateNums = numberDeclarate.filter((value) => value > 2);
+
+console.log(numberDeclarate);
+
+console.log(filteredDeclarateNums);
+
+// dirty func
+
+// Функції які змінюють початкові дані над якими функція проводить роботу
+
+// plusNum -  Працює з масивом який ми прислали та працює з значеннями в масиві
+const plusNum = (array, value) => {
+  for (let i = 0; i < array.length; i++) {
+    array[i] += value;
+  }
+};
+
+plusNum(numberDeclarate, 20);
+
+console.log(numberDeclarate);
+
+// pure func
+
+// Функції які не змінюють початкові значення
+// plus - створює новий масив result
+// пушить в нього необхідні нові значення
+// Повертає новий масив result у зовнішній код
+const plus = (array, value) => {
+  const result = [];
+
+  for (let i = 0; i < array.length; i++) {
+    result.push(array[i] + value);
+  }
+
+  return result;
+};
+
+const newArray = [1, 2, 3, 4, 6];
+
+const plusNumns = plus(newArray, 2000);
+
+console.log(newArray);
+
+console.log(plusNumns);
+
+for (let i = 0; i < newArray.length; i++) {
+  console.log(newArray[i]);
+}
+
+// foreach - перебирає масив, нічого не повертає.Може змінювати поточні данні
+
+// foreach = for з світу методів перебору масивів
+// array - це масив на якому ми викликаємо метод перебору (foreach)
+// index - індекс поточного елементу в масиві
+// number - поточне значення масиву
+newArray.forEach((number, index, array) => console.log(number, index, array));
+
+// майже всі, методи перебору - це чисті функції
+// map - це метод перебору масивів який
+// 1) Повертає новий масив тієї ж довжини, що ї той на якому був викликаний
+// 2) Чиста функція
+// 3) Може використовуватись для трансформації масиву
+const qwe = newArray.map((number) => number + 10);
+
+console.log(newArray);
+console.log(qwe);
+
+// filter
+
+// filter -  це метод перебору масиву який
+// 1) повертає новий масив відфільтрований за умовою
+
+const filter = newArray.filter((item) => item > 2);
+console.log(filter);
+console.log(newArray);
+
+// find
+
+// find - дозволяє знайти один елемент серед багатьох
+// 1) find коли знаходить перший елемент який задовольняє умову припиняє перибирати масив
+// якщо елемент не знайдено отримаєм undefined
+// Повертає перший збіг
+const four = newArray.find((item) => item === 4);
+console.log(four);
+
+// every
+
+// Перевіряє чи пройшли перевірку ВСІ елементи масиву тоді every повертає true ЯКЩО ХОЧА Б ОДИН НЕ ПРОЙШОВ ПОВЕРТАЄ FALSE
+// Метод повертає true або false
+
+const con = [1, 2, 3, 4, 10000];
+console.log(con.every((item) => item <= 10));
+// some
+
+// Перевіряє чи пройшов перевірку ХОЧА Б ОДИН елемент масиву тоді some повертає true ЯКЩО ВСІ НЕ ПРОЙШЛИ ПОВЕРТАЄ FALSE
+console.log(con.some((item) => item <= 10));
