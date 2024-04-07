@@ -245,3 +245,55 @@ const newObj = users.reduce((acc, item) => {
 }, {});
 
 console.log(newObj);
+
+// .sort
+const arrNums = [2, 4, 3, 1, 5, 6, 7, 8, 9, 10];
+
+console.log(arrNums.sort());
+
+const clients = ["Yura", "Petro", "Artem", "Igor"];
+
+console.log(clients.sort());
+
+const obj = [
+  {
+    name: "Artem",
+    daysActive: 15,
+  },
+  {
+    name: "Petro",
+    daysActive: 3,
+  },
+  {
+    name: "Yura",
+    daysActive: 20,
+  },
+  {
+    name: "Igor",
+    daysActive: 10,
+  },
+];
+
+const sortedByActiveDays = (a, b) => b.daysActive - a.daysActive;
+console.log(obj.sort(sortedByActiveDays));
+
+// Ланцюжки методів
+
+const result = arrNums.filter((number) => number >= 5).sort((a, b) => a - b);
+console.log(result);
+
+console.log(result);
+
+const activePlayers = obj
+  .filter((user) => user.daysActive >= 10)
+  .map((user) => user.name);
+
+console.log(activePlayers);
+
+const fruit = ["apple", "pear", "banana"];
+
+fruit.sort(function (a, b) {
+  return a.localeCompare(b);
+});
+
+console.log(fruit);
