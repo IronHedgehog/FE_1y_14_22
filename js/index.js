@@ -1,96 +1,48 @@
-// Процедурне програмування
+const p = document.getElementById("text");
+const text = document.getElementsByClassName("ttt");
+const txt = document.querySelector(".ttt");
 
-const salary = 30000;
-const overtime = 10;
-const rate = 20;
+console.log(document.body);
+console.log(text);
+console.log(p);
+console.log(txt);
+// textContent = дозволяє замінити текстовий контент елементу
+p.textContent = "Artem";
 
-const getSalary = (salary, overtime, rate) => {
-  return salary + overtime * rate;
-};
+console.log(p);
 
-getSalary(salary, overtime, rate);
+// CТВОРЕННЯ DOM вузлів БАЗОВЕ
 
-// ООП
-const worker = {
-  salary: 30000,
-  overtime: 10,
-  rate: 100,
-  getWage() {
-    return this.salary + this.overtime * this.rate;
-  },
-};
+const heading = document.createElement("h1");
 
-console.log(worker.getWage());
+// Вузол який ми створили він може знаходитись тільки в одному місці
+heading.textContent = "Заголовок який ми створили в JS";
 
-// laptop mac
+document.body.append(heading);
 
-// Клас це абстракція(креслення)
-// Клас це обʼєкт
-class Computer {
-  // constructor - це звичайна функція
-  // класс має лише один конструктор
-  // constructor () {}
-  constructor(videocarta, procesor) {
-    this.videocarta = videocarta;
-    this.procesor = procesor;
-  }
-  // Метод класу
-  getVideocartaName = () => {
-    return this.videocarta;
-  };
+const img = document.createElement("img");
 
-  setNewVideokarta = (newVideokarta) => {
-    return (this.videocarta = newVideokarta);
-  };
-}
+img.src =
+  "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260";
+img.alt = "Картинка";
 
-const PC = new Computer(1, 2);
+console.log(img);
 
-console.log(PC);
+document.body.prepend(img);
 
-console.log(PC.getVideocartaName());
-const laptop = new Computer(10, 11);
+document.body.before(heading);
+document.body.after(img);
+// Видалити елементи
+img.remove();
+// innerHtml - Спочатку абсолютно все видаляє
+// додає те що ви попросили
+// innerHtml = ми використовуємо для того,щоб видалити контент
+// document.body.innerHTML = "";
 
-console.log(laptop);
+const template = "<ul><li>asd</li><li>asd</li></ul>";
+document.body.insertAdjacentHTML("beforeend", template);
+// Щоб отримати дата атрибути ви маєте використовувати dataset і через крапку звертатись до другого слова вашого датаатрибута
+console.log(p.dataset.text);
+console.log(img.hasAttribute("onload"));
 
-console.log(laptop.getVideocartaName());
-
-laptop.setNewVideokarta(10);
-
-console.log(laptop.getVideocartaName());
-
-console.log(PC);
-
-// ПРототипне наслідування
-
-const animal = {
-  legs: 4,
-};
-// create() - ми маємо передати від чого ми хочемо наслідуватись
-const dog = Object.create(animal);
-dog.name = "Alex";
-console.log(dog.legs);
-
-for (const key in dog) {
-  // hasOwnProperty - перевіряє на власні властивості(не наслідувані)
-  if (Object.hasOwnProperty.call(dog, key)) {
-    console.log(dog[key]);
-  }
-}
-
-class User {
-  name;
-  // #email - приватна властивість класу
-  // Всіприватні властивості в зовнішньому коді недоступні
-  #email;
-
-  constructor({ name, email }) {
-    this.name = name;
-    this.#email = email;
-  }
-}
-
-const artem = new User({ name: "Artem", email: "adas@asda.com" });
-
-console.log(artem.name);
-// console.log(artem.#email);
+console.log(img.getAttribute("src"));
