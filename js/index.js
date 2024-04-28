@@ -9,6 +9,9 @@ function onKeyDown(e) {
   // щоб
   // e.preventDefault();
   // console.log("KeyDown");
+  if (e.code === "ArrowLeft") {
+    console.log("rhexe");
+  }
   console.log(e.code);
   // e.key = регістрочутливий - повертає символ який ви клацнули, маленька буква або велика
   // console.log(e.key);
