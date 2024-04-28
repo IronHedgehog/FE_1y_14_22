@@ -1,48 +1,65 @@
-const p = document.getElementById("text");
-const text = document.getElementsByClassName("ttt");
-const txt = document.querySelector(".ttt");
+document.addEventListener("keydown", onKeyDown);
+document.addEventListener("keyup", onKeyUp);
+// ЗАСТАРІЛО (НЕ ВИКОРИСТОВУВАТИ)
+// document.addEventListener("keypress", onKeyUp);
+// ЗАСТАРІЛО (НЕ ВИКОРИСТОВУВАТИ)
 
-console.log(document.body);
-console.log(text);
-console.log(p);
-console.log(txt);
-// textContent = дозволяє замінити текстовий контент елементу
-p.textContent = "Artem";
+function onKeyDown(e) {
+  // console.log(e);
+  // щоб
+  // e.preventDefault();
+  // console.log("KeyDown");
+  console.log(e.code);
+  // e.key = регістрочутливий - повертає символ який ви клацнули, маленька буква або велика
+  // console.log(e.key);
 
-console.log(p);
+  if ((e.ctrlKey || e.metaKey) && e.code === "KeyV") {
+    console.log("Комба робе");
 
-// CТВОРЕННЯ DOM вузлів БАЗОВЕ
+    document.body.style.backgroundColor = "black";
+  }
+}
 
-const heading = document.createElement("h1");
+function onKeyUp(e) {
+  document.body.style.backgroundColor = "white";
 
-// Вузол який ми створили він може знаходитись тільки в одному місці
-heading.textContent = "Заголовок який ми створили в JS";
+  // console.log("UP");
+}
 
-document.body.append(heading);
+// Мишки
 
-const img = document.createElement("img");
+const button = document.querySelector(".as");
 
-img.src =
-  "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260";
-img.alt = "Картинка";
+document.body.addEventListener("dblclick", dbClick);
 
-console.log(img);
+function dbClick(e) {
+  console.log("ДабЛклік");
+}
 
-document.body.prepend(img);
+document.body.addEventListener("contextmenu", context);
 
-document.body.before(heading);
-document.body.after(img);
-// Видалити елементи
-img.remove();
-// innerHtml - Спочатку абсолютно все видаляє
-// додає те що ви попросили
-// innerHtml = ми використовуємо для того,щоб видалити контент
-// document.body.innerHTML = "";
+function context(e) {
+  e.preventDefault();
+  console.log("open menu");
+}
 
-const template = "<ul><li>asd</li><li>asd</li></ul>";
-document.body.insertAdjacentHTML("beforeend", template);
-// Щоб отримати дата атрибути ви маєте використовувати dataset і через крапку звертатись до другого слова вашого датаатрибута
-console.log(p.dataset.text);
-console.log(img.hasAttribute("onload"));
+document.body.addEventListener("mousemove", onMouseMove);
 
-console.log(img.getAttribute("src"));
+function onMouseMove(e) {
+  console.log(e);
+}
+
+// 2. Напиши скрипт створення і очищення колекції елементів. Користувач вводить кількість елементів в input і натискає кнопку Створити, після чого рендериться колекція. При натисканні на кнопку Очистити, колекція елементів очищається.
+// Створи функцію createBoxes(amount), яка приймає 1 параметр amount - число. Функція створює стільки div, скільки вказано в amount і додає їх в div#boxes.
+// Кожен створений div:
+// Має випадковий rgb колір фону
+// Розміри найпершого div - 30px на 30px
+// Кожен наступний div після першого, повинен бути ширше і вище попереднього на   10px
+// Створи функцію destroyBoxes(), яка очищає div#boxes.
+// <div id="controls">
+//   <input type="number" min="0" max="100" step="1" />
+//   <button type="button" data-action="render">Створити</button>
+//   <button type="button" data-action="destroy">Очистити</button>
+// </div>
+
+// <div id="boxes"></div>
