@@ -1,0 +1,17 @@
+<template id="dataTemplate">
+  <section class="section">
+    <div class="container">
+      <h2 class="h2">{{title}}</h2>
+      <ul class="list">
+        {{#each items}}
+        <li class="item">
+          <img src="https://loremflickr.com/640/480/food`" />
+          <!-- <a href="{{url}}">{{title}}</a> -->
+          <h3>{{this.title}}</h3>
+          <p>{{this.description}}</p>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+  </section>
+</template>
