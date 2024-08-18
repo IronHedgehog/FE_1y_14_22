@@ -62,9 +62,41 @@ form.addEventListener('submit', e => {
 
 const dataTemplate = document.querySelector('#dataTemplate').innerHTML.trim();
 
+// trim - дозволяє обрізати пробіли по краям
+
 const dataSchablon = Handlebars.compile(dataTemplate);
 
 document.body.insertAdjacentHTML(
   'beforeend',
   dataSchablon({ title: 'Продукти', items: data })
 );
+
+const newTemplate = document.querySelector('#newTemplate').innerHTML.trim();
+
+console.log(newTemplate);
+const newSchablon = Handlebars.compile(newTemplate);
+
+console.log(newSchablon);
+
+document.body.insertAdjacentHTML(
+  'beforeend',
+  newSchablon({ name: 'Petro', lastName: 'Petrovich' })
+);
+
+const object = {
+  name: 'Artem',
+  age: 30,
+  lastName: 'Faust',
+};
+
+const objectJSON = JSON.stringify(object);
+
+console.log(object);
+console.log(objectJSON);
+
+console.log(objectJSON.name);
+
+const obj = JSON.parse(objectJSON);
+
+console.log(obj);
+console.log(obj.name);
