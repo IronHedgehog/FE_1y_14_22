@@ -1,3 +1,4 @@
+import Handlebars from 'handlebars';
 import { data } from './js/data';
 // Імпортували великий масив даних
 
@@ -24,11 +25,12 @@ const COMMENTS_LOCAL_STORAGE_KEY = 'comments';
 
 const comments = [];
 
-localStorage.setItem(COMMENTS_LOCAL_STORAGE_KEY, JSON.stringify(comments));
-
 const nameInput = document.getElementById('name');
 const commentInput = document.getElementById('comment');
 const submitButton = document.getElementById('submitComment');
+const template = document.getElementById('inputHtml').innerHTML.trim();
+
+const compileShablon = Handlebars.compile(template);
 
 submitButton.addEventListener('click', () => {
   const newComment = {
@@ -37,4 +39,27 @@ submitButton.addEventListener('click', () => {
   };
   comments.push(newComment);
   localStorage.setItem(COMMENTS_LOCAL_STORAGE_KEY, JSON.stringify(comments));
+
+  const getItemFromLocal = localStorage.getItem(COMMENTS_LOCAL_STORAGE_KEY);
+
+  const parsedComments = JSON.parse(getItemFromLocal);
+
+  document.body.insertAdjacentHTML(
+    'beforebegin',
+    compileShablon({ comments: parsedComments })
+  );
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const getItemFromLocal = localStorage.getItem(COMMENTS_LOCAL_STORAGE_KEY);
+
+  const parsedComments = JSON.parse(getItemFromLocal);
+
+  document.body.insertAdjacentHTML(
+    'beforebegin',
+    compileShablon({ comments: parsedComments })
+  );
+});
+
+// TODO: FIX CODE
+// FIXME:
