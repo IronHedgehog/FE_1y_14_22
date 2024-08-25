@@ -16,6 +16,25 @@ const parsedStorageData = JSON.parse(dataFromStorage);
 
 console.log(parsedStorageData);
 // removeItem() - потрібен для того,щоб видалити один окремий ключ
-localStorage.removeItem(LOCAL_STORAGE_KEY);
+// localStorage.removeItem(LOCAL_STORAGE_KEY);
 // .clear() - Повністю очіщує довгу памʼять
 // localStorage.clear();
+
+const COMMENTS_LOCAL_STORAGE_KEY = 'comments';
+
+const comments = [];
+
+localStorage.setItem(COMMENTS_LOCAL_STORAGE_KEY, JSON.stringify(comments));
+
+const nameInput = document.getElementById('name');
+const commentInput = document.getElementById('comment');
+const submitButton = document.getElementById('submitComment');
+
+submitButton.addEventListener('click', () => {
+  const newComment = {
+    name: nameInput.value,
+    comment: commentInput.value,
+  };
+  comments.push(newComment);
+  localStorage.setItem(COMMENTS_LOCAL_STORAGE_KEY, JSON.stringify(comments));
+});
