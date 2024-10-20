@@ -55,6 +55,8 @@ const update = {
   body: 'Оновив',
 };
 
+// put,patch,delete,get,POST
+
 async function putRequest() {
   const { data } = await axios.put(
     'https://jsonplaceholder.typicode.com/posts/51',
@@ -105,4 +107,22 @@ async function postRequest() {
     throw new Error('server crushed');
   }
 }
-postRequest();
+// postRequest();
+
+// ?_limit=5&_sort=name
+const getComments = async (_page = 1) => {
+  const searchParams = new URLSearchParams({
+    _limit: 20,
+    // _sort: 'name',
+
+    _page,
+  });
+  const params = '?' + searchParams.toString();
+  const mainUrl = 'https://jsonplaceholder.typicode.com';
+
+  const { data } = await axios.get(`${mainUrl}/comments${params}`);
+  console.log(data);
+  _page += 1;
+};
+
+document.body.addEventListener('click', getComments);
