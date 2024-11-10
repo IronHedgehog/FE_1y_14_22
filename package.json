@@ -1,36 +1,16 @@
 {
-  "name": "jslessons",
-  "version": "2.0.0",
+  "name": "fe_1y_14_22_js",
+  "version": "1.0.0",
   "description": "",
-  "homepage": "https://IronHedgehog.github.io/FE_1y_14_22_JS",
+  "main": "index.js",
   "scripts": {
-    "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /FE_1y_14_22_JS/"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/IronHedgehog/FE_1y_14_22_JS.git"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "npx json-server db.json"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/goitacademy/parcel-project-template/issues"
-  },
   "dependencies": {
-    "axios": "^1.7.7",
-    "handlebars": "^4.7.8",
-    "json-server": "^1.0.0-beta.3",
-    "modern-normalize": "^1.1.0",
-    "parcel-transformer-hbs": "^1.0.4"
-  },
-  "devDependencies": {
-    "@parcel/transformer-sass": "^2.6.0",
-    "buffer": "^6.0.3",
-    "parcel": "^2.6.0",
-    "parcel-reporter-clean-dist": "^1.0.4",
-    "posthtml-include": "^1.7.4",
-    "process": "^0.11.10"
-  },
-  "browserslist": "> 0.5%, last 2 versions, not dead"
+    "json-server": "^1.0.0-beta.3"
+  }
 }
