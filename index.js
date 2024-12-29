@@ -1,34 +1,33 @@
-console.log(navigator);
-let APIKEY = apikey;
-if (navigator.geolocation) {
-  navigator.geolocation.getCurrentPosition(
-    (position) => {
-      console.log(position);
-    },
-    (error) => {
-      console.log(error.message);
-      const language = navigator.language;
-      console.log(language);
-      request(language);
+const form = document.getElementById("form");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const formData = new FormData(e.target);
+  const data = Object.fromEntries(formData.entries());
+  const response = await fetch(
+    "Тут має буть посилання на ваш додаток таблиці",
+    {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      mode: "no-cors",
     }
   );
-} else {
-  console.log("геолокація не підтримується");
-}
+}); 
 
-async function request(locale, coords) {
-  const localeConst = locale ? `locale=${locale}` : "";
-  const coordsConst = coords ? `latlong=${coords}` : "";
 
-  try {
-    const response = await fetch(
-      `https://app.ticketmaster.com/discovery/v2/events.json?${
-        localeConst || coordsConst
-      }&apikey=${APIKEY}`
-    );
-    const data = response.json();
-    console.log(data);
-  } catch (error) {
-    console.log(error.message);
-  }
-}
+// function doPost(e) {
+//   let sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+//   let data = JSON.parse(e.postData.contents);
+//   sheet.appendRow([data.name, data.email, data.message]);
+
+//   let response = {
+//     status: "success",
+//   };
+
+//   return HtmlService.createHtmlOutput(JSON.stringify(response))
+//     .setContentType(ContentService.MimeType.JSON)
+//     .addMetaTag("Access-Control-Allow-Origin", "*");
+// }
