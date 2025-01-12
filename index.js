@@ -15,8 +15,7 @@ form.addEventListener("submit", async (e) => {
       mode: "no-cors",
     }
   );
-}); 
-
+});
 
 // function doPost(e) {
 //   let sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
